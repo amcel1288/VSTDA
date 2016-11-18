@@ -2,7 +2,7 @@
 <html lang="" ng-app="app">
 
 <!--add auto clear input after an entry is added
-	auto fill empty space with a select priority
+	change priority of existing item
 	edit a current entry
 	delete button
 	clear button
@@ -34,10 +34,12 @@
                 </div>
                 <div class="form-group">
                     <label>Priority</label>
-                    <select class="form-control" ng-model="home.newPriority">
+                    <select ng-init = "selected=3" class="form-control" ng-model="home.newPriority">
+                    	<option value="">Low</option>
+                    	<option value="2">Medium</option>
                         <option value="1">High</option>
-                        <option value="2">Medium</option>
-                        <option value="3">Low</option>
+                        
+                        
                     </select>
                 </div>
             </div>

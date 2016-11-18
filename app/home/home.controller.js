@@ -34,8 +34,11 @@
         		case '3':
         			obj.class = "list-group-item-info"
         			break;
+        		default:
+        			obj.class = "list-group-item-info"
         		}
         	vm.things.push(obj);
+        	vm.newThing = '';
         	
         };
         function classSort() {
