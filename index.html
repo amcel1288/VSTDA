@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="" ng-app="app">
+
+<!--add auto clear input after an entry is added
+	auto fill empty space with a select priority
+	edit a current entry
+	delete button
+	clear button
+	save data on page-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet">
+</head>
+
+<body ng-cloak>
+    <h1 class="text-center">To-Do App</h1>
+    <div class="container row" ng-controller="HomeController as home">
+      <div class = "col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Whatcha gotta do?
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Text</label>
+                    <input class="form-control" ng-model="home.newThing"></input>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select class="form-control" ng-model="home.newPriority">
+                        <option value="1">High</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="panel-footer clearfix">
+                <button class="btn btn-danger pull-right" ng-click="home.addThing()">do this later</button>
+            </div>
+           </div>
+        </div>
+    <div class="col-md-8">
+        <div class="btn-group">
+        	<button class="btn btn-primary" ng-click="home.classSort()">Sort most important</button>
+        	<button class="btn btn-primary" ng-click="home.revClassSort()">Sort least important</button>
+        	<button class="btn btn-primary" ng-click="home.textSort()">Sort Alphabetically</button>
+       	</div>
+       	<p>
+        <div class="list-group">
+            <div class="list-group-item" ng-repeat="whatever in home.things | orderBy: home.typeSort track by $index" ng-class=whatever.class ng-cloak>
+ 				{{whatever.text}}
+            </div>
+        </div>
+        </p>
+    </div>
+    </div>
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/home/home.controller.js"></script>
+</body>
+
+</html>
